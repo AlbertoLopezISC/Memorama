@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="jugar">
+
+    <Button
+        android:id="@+id/Boton_salida"
+        android:layout_width="142dp"
+        android:layout_height="43dp"
+        android:layout_marginBottom="16dp"
+        android:text="salida"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="Salir" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:contentDescription="@string/comienza_a_jugar_selecicona_una_carta_para_ver_su_contenido"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableLayout
+            android:id="@+id/tabla"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+
+            <TableRow
+                android:id="@+id/renglon_1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <ImageButton
+                    android:id="@+id/boton00"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_column="0"
+                    android:contentDescription="0"
+                    android:src="@drawable/tapa2"
+                    android:tag="sol" />
+
+                <ImageButton
+                    android:id="@+id/boton01"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_column="1"
+                    android:src="@drawable/tapa2"
+                    android:tag="nube" />
+
+                <ImageButton
+                    android:id="@+id/boton02"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_column="2"
+                    android:src="@drawable/tapa2"
+                    android:tag="viento" />
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/renglon_2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <ImageButton
+                    android:id="@+id/boton03"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_column="0"
+                    android:src="@drawable/tapa2"
+                    android:tag="otro viento" />
+
+                <ImageButton
+                    android:id="@+id/boton04"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_column="1"
+                    android:src="@drawable/tapa2"
+                    android:tag="corazon" />
+
+                <ImageButton
+                    android:id="@+id/boton05"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_column="2"
+                    android:src="@drawable/tapa2"
+                    android:tag="corazon roto" />
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/renglon_3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <ImageButton
+                    android:id="@+id/boton06"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_column="0"
+                    android:src="@drawable/tapa2"
+                    android:tag="sol" />
+
+                <ImageButton
+                    android:id="@+id/boton07"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_column="1"
+                    android:src="@drawable/tapa2"
+                    android:tag="nube" />
+
+                <ImageButton
+                    android:id="@+id/boton08"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:layout_column="2"
+                    android:src="@drawable/tapa2"
+                    android:tag="viento" />
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/renglon_4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <ImageButton
+                    android:id="@+id/boton09"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_column="0"
+                    android:src="@drawable/tapa2"
+                    android:tag="otro viento" />
+
+                <ImageButton
+                    android:id="@+id/boton10"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_column="1"
+                    android:src="@drawable/tapa2"
+                    android:tag="corazon" />
+
+                <ImageButton
+                    android:id="@+id/boton11"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_column="2"
+                    android:src="@drawable/tapa2"
+                    android:tag="corazon roto" />
+
+            </TableRow>
+
+        </TableLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/Boton_salida"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/textoPuntuacion"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
+            android:text="Puntuación:"
+            android:textSize="25dp" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
