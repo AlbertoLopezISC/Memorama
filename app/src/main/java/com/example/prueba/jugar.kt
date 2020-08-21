@@ -19,7 +19,7 @@ class jugar : AppCompatActivity() {
     var cartaSeleccionadaDos : ImageButton? = null     //******
 
     var cartaUnoPos :String = ""
-    var cartaDosPos : String = ""
+    var cartaDosPos : String = "HOla beto"
     var cartaUno: Int = -1   //Con estas variables checamos si son cartas iguales
     var cartaDos: Int = -1   //**************************************************
     var puntuacion: Int = 0
