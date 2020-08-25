@@ -27,7 +27,7 @@
         style="@style/Widget.AppCompat.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="48dp"
+        android:layout_marginBottom="104dp"
         android:contentDescription="@string/boton_jugar"
         android:text="@string/jugar"
         app:layout_constraintBottom_toTopOf="@+id/button_instruccions"
@@ -51,11 +51,23 @@
         android:id="@+id/button_salir"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="144dp"
+        android:layout_marginBottom="100dp"
         android:contentDescription="@string/boton_salir"
         android:text="@string/salir"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/cartasBoton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Cartas"
+        app:layout_constraintBottom_toTopOf="@+id/button_instruccions"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_play" />
 </androidx.constraintlayout.widget.ConstraintLayout>

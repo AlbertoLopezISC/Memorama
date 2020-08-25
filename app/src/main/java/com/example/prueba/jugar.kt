@@ -119,7 +119,7 @@ class jugar : AppCompatActivity() {
                     cartaSeleccionadaUno=boton
                     cartaSeleccionadaUno?.setImageDrawable(drawable) //Cambiamos la imagen (volteamos la carta)
                     cartaUnoPos=boton.getContentDescription().toString()
-                    boton.setContentDescription("Sol")
+                    boton.setContentDescription("Sol") //cambiamos la descripcion
                 } //fin del if**********
                 else if(boton != cartaSeleccionadaUno ) { //en caso de ser la segunda carta que se escogió
                     cartaDos = baraja_numeros[index]    // Guardamos que es lo que esconde esa carta
@@ -131,8 +131,12 @@ class jugar : AppCompatActivity() {
 
                         //empieza retardo
                         cartaSeleccionadaDos?.setContentDescription("Acertaste!!")
-                        cartaSeleccionadaUno?.setVisibility(View.INVISIBLE)   //En caso de que sean las mismas cartas, procedemos a borrar estas
-                        cartaSeleccionadaDos?.setVisibility(View.INVISIBLE)   // mismas, para ello setVisibility y
+                        val dandler = Handler()
+                        dandler.postDelayed(Runnable { // Do something after 5s = 5000ms
+                            cartaSeleccionadaUno?.setVisibility(View.INVISIBLE)   //En caso de que sean las mismas cartas, procedemos a borrar estas
+                            cartaSeleccionadaDos?.setVisibility(View.INVISIBLE)   // mismas, para ello setVisibility y
+                        }, 3000)
+
                         // cartaSeleccionadaUno?.setEnabled(false)               // setEnabled
                         // cartaSeleccionadaDos?.setEnabled(false)               //
                         //Fin del retardo
@@ -140,7 +144,6 @@ class jugar : AppCompatActivity() {
                         handler.postDelayed(Runnable { // Do something after 5s = 5000ms
                             puntuacion += 5
                             textoPuntuacion?.setText("Puntuación: $puntuacion")
-                            textoPuntuacion?.setContentDescription("Acertaste!!")
                             textoPuntuacion.requestFocus()
                         }, 1000)
                     } else
@@ -153,6 +156,7 @@ class jugar : AppCompatActivity() {
 
 
                     val handler = Handler()
+                    cartaSeleccionadaDos?.setContentDescription("fallaste!!")
                     handler.postDelayed(Runnable { // Do something after 5s = 5000ms
                         if(puntuacion >= 2){
                             puntuacion -= 2
@@ -165,7 +169,7 @@ class jugar : AppCompatActivity() {
                         cartaSeleccionadaUno?.setImageDrawable(tapa)
                         cartaSeleccionadaDos?.setContentDescription(cartaDosPos)
                         cartaSeleccionadaUno?.setContentDescription(cartaUnoPos)
-                    }, 1000)
+                    }, 3000)
 
                     //***************************
 
