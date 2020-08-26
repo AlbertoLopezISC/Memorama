@@ -9,8 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MenuJuego"></activity>
-        <activity android:name=".menuJuego" />
+        <activity android:name=".Ajustes"></activity>
         <activity android:name=".jugar" />
         <activity
             android:name=".MainActivity"

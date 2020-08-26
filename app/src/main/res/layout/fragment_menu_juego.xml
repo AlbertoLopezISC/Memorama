@@ -5,13 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:contentDescription="@string/menu_de_dificultad_veamos_de_que_eres_capaz"
-    tools:context=".MenuJuego">
+    android:background="@drawable/gradiente">
+
 
     <Button
         android:id="@+id/botonFacil"
-        android:layout_width="wrap_content"
+        android:layout_width="140dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="208dp"
+        android:background="#ffffff"
         android:contentDescription="fácil, para los principiantes"
         android:tag="fácil"
         android:text="fácil"
@@ -39,8 +41,9 @@
 
     <Button
         android:id="@+id/botonNormal"
-        android:layout_width="wrap_content"
+        android:layout_width="140dp"
         android:layout_height="wrap_content"
+        android:background="#ffffff"
         android:contentDescription="Normal, para quienes saben jugar"
         android:text="Normal"
         app:layout_constraintBottom_toTopOf="@+id/botonDificil"
@@ -50,9 +53,10 @@
 
     <Button
         android:id="@+id/botonDificil"
-        android:layout_width="wrap_content"
+        android:layout_width="140dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="64dp"
+        android:background="#ffffff"
         android:contentDescription="dificil, para los que quieran un reto"
         android:tag="Dificil"
         android:text="Dificil"

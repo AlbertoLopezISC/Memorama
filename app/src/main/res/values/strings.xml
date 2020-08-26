@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Prueba</string>
+    <string name="app_name">Memorama!</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
@@ -35,4 +35,6 @@
     <string name="pantalla_de_instrucciones_sera_rapido_y_sencillo_el_comenzar_a_jugar">Pantalla de instrucciones sera rapido y sencillo el comenzar a jugar</string>
     <string name="menu_de_dificultad_veamos_de_que_eres_capaz">Menu de dificultad, veamos de que eres capaz.</string>
     <string name="comienza_a_jugar_selecicona_una_carta_para_ver_su_contenido">Comienza a Jugar! Selecicona una carta para ver su contenido</string>
+    <string name="button">Button</string>
+    <string name="cambiarcolor">CambiarColor</string>
 </resources>
