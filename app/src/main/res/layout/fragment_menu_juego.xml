@@ -2,10 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/menuJuego"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:contentDescription="@string/menu_de_dificultad_veamos_de_que_eres_capaz"
-    android:background="@drawable/gradiente">
+    android:background="@drawable/gradiente"
+    android:contentDescription="@string/menu_de_dificultad_veamos_de_que_eres_capaz">
 
 
     <Button
@@ -24,7 +25,7 @@
         tools:text="fácil" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewInstrucciones"
         android:layout_width="188dp"
         android:layout_height="25dp"
         android:contentDescription="Seleccionar Dificultad, vienen tres opciones. Facil, normal y dificil"
