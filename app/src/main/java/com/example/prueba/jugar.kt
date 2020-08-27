@@ -37,6 +37,11 @@ class jugar : AppCompatActivity() {
         setContentView(R.layout.activity_jugar)
         val tapa:  Drawable? = androidx.core.content.res.ResourcesCompat.getDrawable(resources, R.drawable.tapa2, null)
         val drawable: Drawable? = androidx.core.content.res.ResourcesCompat.getDrawable(resources, R.drawable.sol, null)
+        val imagen1: Drawable? = androidx.core.content.res.ResourcesCompat.getDrawable(resources, R.drawable.barco, null)
+        val imagen2: Drawable? = androidx.core.content.res.ResourcesCompat.getDrawable(resources, R.drawable.barco_de_papel, null)
+        val imagen3: Drawable? = androidx.core.content.res.ResourcesCompat.getDrawable(resources, R.drawable.pajaro_carpintero, null)
+        val imagen4: Drawable? = androidx.core.content.res.ResourcesCompat.getDrawable(resources, R.drawable.pajaro_carpintero_colorido, null)
+        val imagen5: Drawable? = androidx.core.content.res.ResourcesCompat.getDrawable(resources, R.drawable.nube, null)
 
         //capturando lo que nos llego de parametro
         val objetIntent: Intent= intent
