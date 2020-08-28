@@ -117,8 +117,8 @@ class SecondFragment : Fragment() {
                                 "el boton Regresar para ir al menu de inicio";
                         textViewInstrucciones.text = "Ahora las cartas lucen diferente. Por lo tanto nos hemos equivocado." +
                                 "En el nivel facil esto no causara ninguna penalizacion, pero si quisieras un mayor reto, en el nivel dificil" +
-                                "esto quitara 2 puntos a la puntuacion que lleves. Listo. Hemos terminado con el tutorial, ahora puedes presionar\" +\n" +
-                                "                                \"el boton Regresar para ir al menu de inicio  ";
+                                "esto quitara 2 puntos a la puntuacion que lleves. Listo. Hemos terminado con el tutorial, ahora puedes presionar" +
+                                "el boton Regresar para ir al menu de inicio  ";
                         Handler().postDelayed(Runnable { // Do something after 5s = 5000ms
                             carta1Instrucciones.contentDescription = "Carta destapada, Gran barco de 4 chimeneas surcando el mar.";
                         }, 1000)
@@ -148,10 +148,12 @@ class SecondFragment : Fragment() {
                     if(c1) {
                         carta2Instrucciones.contentDescription ="Ahora las cartas lucen diferente. Por lo tanto nos hemos equivocado." +
                                 "En el nivel facil esto no causara ninguna penalizacion, pero si quisieras un mayor reto, en el nivel dificil" +
-                                "esto quitara 2 puntos a la puntuacion que lleves.";
+                                "esto quitara 2 puntos a la puntuacion que lleves. Listo. Hemos terminado con el tutorial, ahora puedes presionar" +
+                                "el boton Regresar para ir al menu de inicio  ";
                         textViewInstrucciones.text = "Ahora las cartas lucen diferente. Por lo tanto nos hemos equivocado." +
                                 "En el nivel facil esto no causara ninguna penalizacion, pero si quisieras un mayor reto, en el nivel dificil" +
-                                "esto quitara 2 puntos a la puntuacion que lleves.";
+                                "esto quitara 2 puntos a la puntuacion que lleves. Listo. Hemos terminado con el tutorial, ahora puedes presionar" +
+                                "el boton Regresar para ir al menu de inicio  ";
                         Handler().postDelayed(Runnable { // Do something after 5s = 5000ms
                             carta2Instrucciones.contentDescription = "Carta destapada. Pequeño barco de papel sobre el agua";
                         }, 1000)
