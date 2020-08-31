@@ -19,7 +19,7 @@ class jugar : AppCompatActivity() {
     var cartaSeleccionadaDos : ImageButton? = null     //******
 
     var cartaUnoPos :String = ""
-    var cartaDosPos : String = "HOla beto"
+    var cartaDosPos : String = ""
     var cartaUno: Int = -1   //Con estas variables checamos si son cartas iguales
     var cartaDos: Int = -1   //**************************************************
     var puntuacion: Int = 0
@@ -126,61 +126,64 @@ class jugar : AppCompatActivity() {
                     cartaUnoPos=boton.getContentDescription().toString()
                     boton.setContentDescription("Sol") //cambiamos la descripcion
                 } //fin del if**********
-                else if(boton != cartaSeleccionadaUno ) { //en caso de ser la segunda carta que se escogió
+                else if(boton != cartaSeleccionadaUno  && cartaDos == -1) { //en caso de ser la segunda carta que se escogió
                     cartaDos = baraja_numeros[index]    // Guardamos que es lo que esconde esa carta
                     cartaSeleccionadaDos=boton
                     cartaSeleccionadaDos?.setImageDrawable(drawable) //Cambiamos la imagen (volteamos la carta)
                     cartaDosPos=boton.getContentDescription().toString()
                     boton.setContentDescription("Sol")
-                    if(cartaUno == cartaDos  ) {
+                    if(cartaUno == cartaDos  ) { //En caso de que hayan sido las mismas
 
                         //empieza retardo
                         cartaSeleccionadaDos?.setContentDescription("Acertaste!!")
-                        val dandler = Handler()
+
+                        val dandler = Handler() // Comienzo del retardo
                         dandler.postDelayed(Runnable { // Do something after 5s = 5000ms
                             cartaSeleccionadaUno?.setVisibility(View.INVISIBLE)   //En caso de que sean las mismas cartas, procedemos a borrar estas
-                            cartaSeleccionadaDos?.setVisibility(View.INVISIBLE)   // mismas, para ello setVisibility y
-                        }, 3000)
-
-                        // cartaSeleccionadaUno?.setEnabled(false)               // setEnabled
-                        // cartaSeleccionadaDos?.setEnabled(false)               //
-                        //Fin del retardo
-                        val handler = Handler()
-                        handler.postDelayed(Runnable { // Do something after 5s = 5000ms
+                            cartaSeleccionadaDos?.setVisibility(View.INVISIBLE)
                             puntuacion += 5
                             textoPuntuacion?.setText("Puntuación: $puntuacion")
                             textoPuntuacion.requestFocus()
-                        }, 1000)
-                    } else
-                        println("vuelve a intentar WEY : $cartaUno y $cartaDos")
-                    cartaUno = -1
-                    cartaDos = -1
+                            cartaUno = -1
+                            cartaDos = -1
+                        }, 3000) //Fin del retardo
+
+                        // cartaSeleccionadaUno?.setEnabled(false)               // setEnabled
+                        // cartaSeleccionadaDos?.setEnabled(false)               //
+
+                    } else { //En caso de que NO sea el mismo
+                        val handler = Handler()
+                        cartaSeleccionadaDos?.setContentDescription("fallaste!!")
+                        handler.postDelayed(Runnable { // Do something after 5s = 5000ms inicio del retardo
+                            if(puntuacion >= 2){
+                                puntuacion -= 2
+                            } else {
+                                puntuacion = 0;
+                            }
+                            textoPuntuacion?.setText("Puntuación: $puntuacion")
+                            //Regresamos las cartas a como estaban antes de voltearlas
+                            cartaSeleccionadaDos?.setImageDrawable(tapa)
+                            cartaSeleccionadaUno?.setImageDrawable(tapa)
+                            cartaSeleccionadaDos?.setContentDescription(cartaDosPos)
+                            cartaSeleccionadaUno?.setContentDescription(cartaUnoPos)
+                            cartaUno = -1
+                            cartaDos = -1
+                        }, 3000)   //fin del retardo
+
+
+                    }  //fin del else de cuando no sean las mismas cartas
+
+                    //Esto debe pasar indistintamente de que sean correctas o no las cartas
+                    println("vuelve a intentar WEY : $cartaUno y $cartaDos")
+
                     cartaSeleccionadaUno?.setTag("hola")
 
 
 
 
-                    val handler = Handler()
-                    cartaSeleccionadaDos?.setContentDescription("fallaste!!")
-                    handler.postDelayed(Runnable { // Do something after 5s = 5000ms
-                        if(puntuacion >= 2){
-                            puntuacion -= 2
-                        } else {
-                            puntuacion = 0;
-                        }
-                        textoPuntuacion?.setText("Puntuación: $puntuacion")
-                        //Regresamos las cartas a como estaban antes de voltearlas
-                        cartaSeleccionadaDos?.setImageDrawable(tapa)
-                        cartaSeleccionadaUno?.setImageDrawable(tapa)
-                        cartaSeleccionadaDos?.setContentDescription(cartaDosPos)
-                        cartaSeleccionadaUno?.setContentDescription(cartaUnoPos)
-                    }, 3000)
-
-                    //***************************
 
 
-
-                } // fin del else
+                } //fin del else if de ser la segunda carta escogida
 
             } //fin de la funcion OnClickListener***
 
