@@ -10,7 +10,12 @@ import com.google.android.material.snackbar.Snackbar
 class Ajustes : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_ajustes)
+        if(intent.getStringExtra("fragmento") == "acerca_de"){
+            println("golaaa")
+            setContentView(R.layout.acercade)
+        } else {
+            setContentView(R.layout.activity_ajustes)
+        }
 //        setSupportActionBar(findViewById(R.id.toolbar))
 
         findViewById<FloatingActionButton>(R.id.fab).setOnClickListener { view ->

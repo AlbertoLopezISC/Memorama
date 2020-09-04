@@ -41,5 +41,7 @@
         Presiona siguiente para continuar, el boton esta localizado abajo a la derecha. O tambien puedes navegar por la pantalla arrastrando tu dedo.</string>
     <string name="carta_numero_1">Carta Numero 1</string>
     <string name="carta_numero_2">Carta numero 2</string>
+    <string name="informacion_basica_de_la_aplicacion">Informacion basica de la aplicacion.</string>
+    <string name="acerca_de">Acerca de...</string>
 
 </resources>

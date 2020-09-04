@@ -34,9 +34,11 @@ class MainActivity : AppCompatActivity() {
         return when (item.itemId) {
             R.id.action_settings -> {
                 /*setContentView(R.layout.menu_ajustes_fragment)*/
-
-                val i = Intent(this, Ajustes::class.java)
-                startActivity(i);
+                startActivity(Intent(this, Ajustes::class.java).putExtra("fragmento", "ajustes"))
+                return false
+            }
+            R.id.acerca_de -> {
+                startActivity(Intent(this, Ajustes::class.java).putExtra("fragmento","acerca_de"))
                 return false
             }
             else -> super.onOptionsItemSelected(item)
