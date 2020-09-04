@@ -5,7 +5,6 @@
     android:id="@+id/acerca_de"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradiente"
     android:contentDescription="Acerca de contiene informacion de los que hicieron el juego">
 
     <TextView

@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
+import kotlinx.android.synthetic.main.acercade.*
 import kotlinx.android.synthetic.main.menu_ajustes_fragment.*
 
 
@@ -25,7 +26,7 @@ class AcercaDeFragment : Fragment() {
     @SuppressLint("ResourceType")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        acerca_de.background = background.getBackground()
 
     }
 }
