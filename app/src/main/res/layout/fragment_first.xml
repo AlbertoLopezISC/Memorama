@@ -5,7 +5,6 @@
     android:id="@+id/firstFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradiente"
     android:contentDescription="@string/menu_de_inicio_pantalla_principal"
     tools:context=".FirstFragment">
 

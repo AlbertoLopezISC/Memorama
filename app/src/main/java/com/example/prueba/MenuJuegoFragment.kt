@@ -10,6 +10,7 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
+import kotlinx.android.synthetic.main.fragment_first.*
 import kotlinx.android.synthetic.main.fragment_menu_juego.*
 
 /**
@@ -26,10 +27,8 @@ class MenuJuegoFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
-
         super.onViewCreated(view, savedInstanceState)
-
+        menuJuego.background = background.getBackground()
         botonFacil.setOnClickListener {
             var nombre = Nombre.text.toString()
             val bundle = bundleOf("tamaño" to 6, "nombre" to nombre);

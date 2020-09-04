@@ -6,6 +6,7 @@ import android.view.Menu
 import android.view.MenuItem
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.menu_ajustes_fragment.*
 
 class Ajustes : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,7 +16,9 @@ class Ajustes : AppCompatActivity() {
             setContentView(R.layout.acercade)
         } else {
             setContentView(R.layout.activity_ajustes)
+
         }
+
 //        setSupportActionBar(findViewById(R.id.toolbar))
 
         findViewById<FloatingActionButton>(R.id.fab).setOnClickListener { view ->

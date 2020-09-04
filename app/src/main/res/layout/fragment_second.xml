@@ -2,9 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/secondFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradiente"
     android:contentDescription="@string/pantalla_de_instrucciones_sera_rapido_y_sencillo_el_comenzar_a_jugar"
     tools:context=".SecondFragment">
 
@@ -16,7 +16,6 @@
         android:layout_marginLeft="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
-        android:background="@android:color/background_light"
         android:text="@string/sera_facil_comenzar_a_jugar_primero_veamos_los_movimientos_que_puedes_hacer_para_este_tutorial_necesitas_tener_activo_talkback_presiona_siguiente_para_continuar_el_boton_esta_localizado_abajo_a_la_derecha"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintBottom_toBottomOf="parent"

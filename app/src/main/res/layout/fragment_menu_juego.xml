@@ -5,7 +5,6 @@
     android:id="@+id/menuJuego"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradiente"
     android:contentDescription="@string/menu_de_dificultad_veamos_de_que_eres_capaz">
 
 

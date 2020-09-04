@@ -1,12 +1,16 @@
 package com.example.prueba
 
+import android.app.Application
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
-import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.snackbar.Snackbar
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -38,10 +42,34 @@ class MainActivity : AppCompatActivity() {
                 return false
             }
             R.id.acerca_de -> {
-                startActivity(Intent(this, Ajustes::class.java).putExtra("fragmento","acerca_de"))
+                startActivity(Intent(this, Ajustes::class.java).putExtra("fragmento", "acerca_de"))
                 return false
             }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+}
+
+class background  // private constructor
+private constructor() {
+    companion object {
+        private  var bg = GradientDrawable(
+            GradientDrawable.Orientation.LEFT_RIGHT,
+            intArrayOf(
+                Color.parseColor("#eeffe3"),
+                Color.parseColor("#bffff8"),
+                Color.parseColor("#bdd9ff"),
+                Color.parseColor("#eeffe3"),
+                Color.parseColor("#bffff8")
+            )
+        )
+        fun setBackground(`val`: GradientDrawable) {
+            bg = `val`
+        }
+
+        fun getBackground(): GradientDrawable {
+            return bg
+        }
+
     }
 }

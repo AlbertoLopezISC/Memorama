@@ -43,5 +43,6 @@
     <string name="carta_numero_2">Carta numero 2</string>
     <string name="informacion_basica_de_la_aplicacion">Informacion basica de la aplicacion.</string>
     <string name="acerca_de">Acerca de...</string>
+    <string name="aceptar">Aceptar</string>
 
 </resources>

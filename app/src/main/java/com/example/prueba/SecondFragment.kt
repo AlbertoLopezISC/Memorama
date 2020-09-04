@@ -13,6 +13,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.activity_jugar.*
+import kotlinx.android.synthetic.main.fragment_first.*
 import kotlinx.android.synthetic.main.fragment_second.*
 
 /**
@@ -41,6 +42,7 @@ class SecondFragment : Fragment() {
         val imagen3: Drawable? = androidx.core.content.res.ResourcesCompat.getDrawable(resources, R.drawable.pajaro_carpintero, null)
         val imagen4: Drawable? = androidx.core.content.res.ResourcesCompat.getDrawable(resources, R.drawable.pajaro_carpintero_colorido, null)
         val imagen5: Drawable? = androidx.core.content.res.ResourcesCompat.getDrawable(resources, R.drawable.nube, null)
+        secondFragment.background = background.getBackground()
 
 
         Handler().postDelayed(Runnable { // Do something after 5s = 5000ms
@@ -52,10 +54,10 @@ class SecondFragment : Fragment() {
         view.findViewById<Button>(R.id.button_siguiente).setOnClickListener {
             if(cont == 0){
                 button_siguiente.contentDescription = "Muy bien, ahora apareceran una carta tapada" +
-                        "en el centro de la pantalla. Presiona la carta para escuchar cual numero es. Presiona dos veces" +
+                        "en el centro a la izquierda de la pantalla. Presionala  para escuchar cual numero es. Presiona dos veces" +
                         "para destaparla y ver lo que es. Cuando lo hayas hecho, presiona siguiente"
                 view.findViewById<TextView>(R.id.textViewInstrucciones).text = "Muy bien, ahora apareceran una carta tapada" +
-                        "en el centro de la pantalla. Presiona la carta para escuchar cual numero es. Presiona dos veces" +
+                        "en el centro a la izquierda de la pantalla. Presionala para escuchar cual numero es. Presiona dos veces" +
                         "para destaparla y ver lo que es. Cuando lo hayas hecho, presiona siguiente"
                 Handler().postDelayed(Runnable { // Do something after 5s = 5000ms
                     if(button_siguiente != null){
@@ -66,9 +68,9 @@ class SecondFragment : Fragment() {
                 cont++;
             } else if(cont == 1){
                 button_siguiente.contentDescription = "Muy bien, ahora que ya viste que carta es, aparecera" +
-                        "la siguiente carta y tendras que destaparla de nuevo.";
+                        "la siguiente carta en el centro a la derecha y tendras que destaparla de nuevo.";
                 view.findViewById<TextView>(R.id.textViewInstrucciones).text = "Muy bien, ahora que ya viste que carta es, aparecera" +
-                        "la siguiente carta y tendras que destaparla de nuevo.";
+                        "la siguiente carta en el centro a la derecha y tendras que destaparla de nuevo.";
                 Handler().postDelayed(Runnable { // Do something after 5s = 5000ms
                     if(button_siguiente != null){
                         button_siguiente.contentDescription = "Boton siguiente";

@@ -37,10 +37,10 @@
             app:destination="@id/FirstFragment" />
         <action
             android:id="@+id/action_menuJuegoFragment_to_jugar"
-            app:destination="@id/jugar" />
+            app:destination="@id/jugarFragment" />
     </fragment>
     <activity
-        android:id="@+id/jugar"
+        android:id="@+id/jugarFragment"
         android:name="com.example.prueba.jugar"
         android:label="activity_jugar"
         tools:layout="@layout/activity_jugar" />

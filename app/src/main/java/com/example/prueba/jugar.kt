@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_jugar.*
+import kotlinx.android.synthetic.main.fragment_first.*
 import java.util.concurrent.Delayed
 
 
@@ -35,6 +36,8 @@ class jugar : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_jugar)
+        jugarFragment.background = background.getBackground()
+
         val tapa:  Drawable? = androidx.core.content.res.ResourcesCompat.getDrawable(resources, R.drawable.tapa2, null)
         val drawable: Drawable? = androidx.core.content.res.ResourcesCompat.getDrawable(resources, R.drawable.sol, null)
         val imagen1: Drawable? = androidx.core.content.res.ResourcesCompat.getDrawable(resources, R.drawable.barco, null)
