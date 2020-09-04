@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.fragment_menu_juego.*
@@ -25,18 +26,23 @@ class MenuJuegoFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+
         super.onViewCreated(view, savedInstanceState)
 
         botonFacil.setOnClickListener {
-            val bundle = bundleOf("tamaño" to 6);
+            var nombre = Nombre.text.toString()
+            val bundle = bundleOf("tamaño" to 6, "nombre" to nombre);
             findNavController().navigate(R.id.action_menuJuegoFragment_to_jugar, bundle);
         }
         botonNormal.setOnClickListener {
-            val bundle = bundleOf("tamaño" to 8);
+            var nombre = Nombre.text.toString()
+            val bundle = bundleOf("tamaño" to 8, "nombre" to nombre);
             findNavController().navigate(R.id.action_menuJuegoFragment_to_jugar, bundle);
         }
         botonDificil.setOnClickListener {
-            val bundle = bundleOf("tamaño" to 12);
+            var nombre = Nombre.text.toString()
+            val bundle = bundleOf("tamaño" to 12, "nombre" to nombre);
             findNavController().navigate(R.id.action_menuJuegoFragment_to_jugar, bundle);
         }
     }

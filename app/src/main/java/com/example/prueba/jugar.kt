@@ -97,6 +97,8 @@ class jugar : AppCompatActivity() {
             println(numero)
         //fin de la comprobacion***************
 
+
+
         //Mostrando el numero de cartas segun la dificultad seleccionada
         for((index,carta) in totalBotones.withIndex())
         {
@@ -127,11 +129,15 @@ class jugar : AppCompatActivity() {
                     boton.setContentDescription("Sol") //cambiamos la descripcion
                 } //fin del if**********
                 else if(boton != cartaSeleccionadaUno  && cartaDos == -1) { //en caso de ser la segunda carta que se escogió
+
+
                     cartaDos = baraja_numeros[index]    // Guardamos que es lo que esconde esa carta
                     cartaSeleccionadaDos=boton
                     cartaSeleccionadaDos?.setImageDrawable(drawable) //Cambiamos la imagen (volteamos la carta)
                     cartaDosPos=boton.getContentDescription().toString()
                     boton.setContentDescription("Sol")
+
+
                     if(cartaUno == cartaDos  ) { //En caso de que hayan sido las mismas
 
                         //empieza retardo
@@ -160,6 +166,8 @@ class jugar : AppCompatActivity() {
                             } else {
                                 puntuacion = 0;
                             }
+
+
                             textoPuntuacion?.setText("Puntuación: $puntuacion")
                             //Regresamos las cartas a como estaban antes de voltearlas
                             cartaSeleccionadaDos?.setImageDrawable(tapa)
