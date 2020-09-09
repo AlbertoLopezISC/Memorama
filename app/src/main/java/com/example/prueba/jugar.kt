@@ -1,23 +1,22 @@
 package com.example.prueba
 
 import android.content.Intent
-import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
+import android.widget.Button
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_jugar.*
-import kotlinx.android.synthetic.main.fragment_first.*
 import java.util.concurrent.Delayed
 
 
 class jugar : AppCompatActivity() {
     var retraso:Delayed? =null
 
-    var cartaSeleccionadaUno  :ImageButton? = null     //con estas variables guardamos los botones seleccionados
-    var cartaSeleccionadaDos : ImageButton? = null     //******
+    var cartaSeleccionadaUno  :Button? = null     //con estas variables guardamos los botones seleccionados
+    var cartaSeleccionadaDos : Button? = null     //******
 
     var cartaUnoPos :String = ""
     var cartaDosPos : String = "version 1.2"
@@ -26,7 +25,7 @@ class jugar : AppCompatActivity() {
     var puntuacion: Int = 0
     var baraja_numeros = arrayListOf<Int>()  //array que contiene los numeros con los cuales compararemos si son las mismas cartas
     var tamano_baraja :Int = 0
-    var baraja_botones = arrayListOf<ImageButton>()
+    var baraja_botones = arrayListOf<Button>()
 
     var rnds: Int = 0  //variable para generar numeros aleatorios
     var repetidas = 0 //variable para generar los numeros aleatorios
@@ -49,6 +48,7 @@ class jugar : AppCompatActivity() {
         //capturando lo que nos llego de parametro
         val objetIntent: Intent= intent
         tamano_baraja = objetIntent.getIntExtra("tamaño",12)
+        var puntos = objetIntent.getIntExtra("puntos", 0)
         //Boton para salir del juego
         Boton_salida.setOnClickListener {
             //Lineas de codigo para llamar a la actividad principal pero sin liberar memoria
@@ -59,19 +59,19 @@ class jugar : AppCompatActivity() {
         }
         //**********
         //Guardamos todos los botones en un array
-        var totalBotones= arrayListOf<ImageButton>(
-            boton00,
-            boton01,
-            boton02,
-            boton03,
-            boton04,
-            boton05,
-            boton06,
-            boton07,
-            boton08,
-            boton09,
-            boton10,
-            boton11
+        var totalBotones= arrayListOf<Button>(
+            button1,
+            button2,
+            button3,
+            button4,
+            button5,
+            button6,
+            button7,
+            button8,
+            button9,
+            button10,
+            button11,
+            button12
         )
 
         //***************
@@ -127,7 +127,7 @@ class jugar : AppCompatActivity() {
                 if(cartaUno == -1) { //en caso de ser la primera carta que se escogió
                     cartaUno = baraja_numeros[index]    // Guardamos que es lo que esconde esa carta
                     cartaSeleccionadaUno=boton
-                    cartaSeleccionadaUno?.setImageDrawable(drawable) //Cambiamos la imagen (volteamos la carta)
+                    cartaSeleccionadaUno?.setBackground(drawable) //Cambiamos la imagen (volteamos la carta)
                     cartaUnoPos=boton.getContentDescription().toString()
                     boton.setContentDescription("Sol") //cambiamos la descripcion
                 } //fin del if**********
@@ -136,7 +136,7 @@ class jugar : AppCompatActivity() {
 
                     cartaDos = baraja_numeros[index]    // Guardamos que es lo que esconde esa carta
                     cartaSeleccionadaDos=boton
-                    cartaSeleccionadaDos?.setImageDrawable(drawable) //Cambiamos la imagen (volteamos la carta)
+                    cartaSeleccionadaDos?.setBackground(drawable) //Cambiamos la imagen (volteamos la carta)
                     cartaDosPos=boton.getContentDescription().toString()
                     boton.setContentDescription("Sol")
 
@@ -164,8 +164,8 @@ class jugar : AppCompatActivity() {
                         val handler = Handler()
                         cartaSeleccionadaDos?.setContentDescription("fallaste!!")
                         handler.postDelayed(Runnable { // Do something after 5s = 5000ms inicio del retardo
-                            if(puntuacion >= 2){
-                                puntuacion -= 2
+                            if(puntuacion >= puntos){
+                                puntuacion -= puntos
                             } else {
                                 puntuacion = 0;
                             }
@@ -173,8 +173,8 @@ class jugar : AppCompatActivity() {
 
                             textoPuntuacion?.setText("Puntuación: $puntuacion")
                             //Regresamos las cartas a como estaban antes de voltearlas
-                            cartaSeleccionadaDos?.setImageDrawable(tapa)
-                            cartaSeleccionadaUno?.setImageDrawable(tapa)
+                            cartaSeleccionadaDos?.setBackground(tapa)
+                            cartaSeleccionadaUno?.setBackground(tapa)
                             cartaSeleccionadaDos?.setContentDescription(cartaDosPos)
                             cartaSeleccionadaUno?.setContentDescription(cartaUnoPos)
                             cartaUno = -1

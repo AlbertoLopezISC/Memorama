@@ -34,7 +34,8 @@
             android:id="@+id/tabla"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp">
+            android:gravity="fill_horizontal"
+            android:padding="3dp">
 
             <TableRow
                 android:id="@+id/renglon_1"
@@ -42,31 +43,23 @@
                 android:layout_height="match_parent"
                 android:gravity="center">
 
-                <ImageButton
-                    android:id="@+id/boton00"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_column="0"
-                    android:contentDescription="0"
-                    android:src="@drawable/tapa2"
-                    android:tag="sol" />
+                <Button
+                    android:id="@+id/button1"
+                    android:layout_width="98dp"
+                    android:layout_height="96dp"
+                    android:background="@drawable/tapa2" />
 
-                <ImageButton
-                    android:id="@+id/boton01"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_column="1"
-                    android:src="@drawable/tapa2"
-                    android:tag="nube" />
+                <Button
+                    android:id="@+id/button2"
+                    android:layout_width="98dp"
+                    android:layout_height="96dp"
+                    android:background="@drawable/tapa2" />
 
-                <ImageButton
-                    android:id="@+id/boton02"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_column="2"
-                    android:src="@drawable/tapa2"
-                    android:tag="viento" />
-
+                <Button
+                    android:id="@+id/button3"
+                    android:layout_width="98dp"
+                    android:layout_height="96dp"
+                    android:background="@drawable/tapa2" />
             </TableRow>
 
             <TableRow
@@ -75,30 +68,23 @@
                 android:layout_height="match_parent"
                 android:gravity="center">
 
-                <ImageButton
-                    android:id="@+id/boton03"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_column="0"
-                    android:src="@drawable/tapa2"
-                    android:tag="otro viento" />
+                <Button
+                    android:id="@+id/button4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="96dp"
+                    android:background="@drawable/tapa2" />
 
-                <ImageButton
-                    android:id="@+id/boton04"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_column="1"
-                    android:src="@drawable/tapa2"
-                    android:tag="corazon" />
+                <Button
+                    android:id="@+id/button5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/tapa2" />
 
-                <ImageButton
-                    android:id="@+id/boton05"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_column="2"
-                    android:src="@drawable/tapa2"
-                    android:tag="corazon roto" />
-
+                <Button
+                    android:id="@+id/button6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/tapa2" />
             </TableRow>
 
             <TableRow
@@ -107,30 +93,23 @@
                 android:layout_height="match_parent"
                 android:gravity="center">
 
-                <ImageButton
-                    android:id="@+id/boton06"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_column="0"
-                    android:src="@drawable/tapa2"
-                    android:tag="sol" />
+                <Button
+                    android:id="@+id/button7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="96dp"
+                    android:background="@drawable/tapa2" />
 
-                <ImageButton
-                    android:id="@+id/boton07"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_column="1"
-                    android:src="@drawable/tapa2"
-                    android:tag="nube" />
-
-                <ImageButton
-                    android:id="@+id/boton08"
-                    android:layout_width="80dp"
+                <Button
+                    android:id="@+id/button8"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_column="2"
-                    android:src="@drawable/tapa2"
-                    android:tag="viento" />
+                    android:background="@drawable/tapa2" />
 
+                <Button
+                    android:id="@+id/button9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/tapa2" />
             </TableRow>
 
             <TableRow
@@ -139,33 +118,27 @@
                 android:layout_height="match_parent"
                 android:gravity="center">
 
-                <ImageButton
-                    android:id="@+id/boton09"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_column="0"
-                    android:src="@drawable/tapa2"
-                    android:tag="otro viento" />
+                <Button
+                    android:id="@+id/button10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="96dp"
+                    android:background="@drawable/tapa2" />
 
-                <ImageButton
-                    android:id="@+id/boton10"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_column="1"
-                    android:src="@drawable/tapa2"
-                    android:tag="corazon" />
+                <Button
+                    android:id="@+id/button11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/tapa2" />
 
-                <ImageButton
-                    android:id="@+id/boton11"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_column="2"
-                    android:src="@drawable/tapa2"
-                    android:tag="corazon roto" />
-
+                <Button
+                    android:id="@+id/button12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/tapa2" />
             </TableRow>
 
         </TableLayout>
+
     </LinearLayout>
 
     <LinearLayout

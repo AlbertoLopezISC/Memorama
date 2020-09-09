@@ -30,19 +30,30 @@ class MenuJuegoFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         menuJuego.background = background.getBackground()
         botonFacil.setOnClickListener {
+
             var nombre = Nombre.text.toString()
-            val bundle = bundleOf("tamaño" to 6, "nombre" to nombre);
-            findNavController().navigate(R.id.action_menuJuegoFragment_to_jugar, bundle);
+            var nombre2 = nombre.replace(" ", "")
+            if(nombre2 != ""){
+                val bundle = bundleOf("tamaño" to 6, "nombre" to nombre, "puntos" to 0);
+                findNavController().navigate(R.id.action_menuJuegoFragment_to_jugar, bundle);
+            }
         }
         botonNormal.setOnClickListener {
             var nombre = Nombre.text.toString()
-            val bundle = bundleOf("tamaño" to 8, "nombre" to nombre);
-            findNavController().navigate(R.id.action_menuJuegoFragment_to_jugar, bundle);
+            var nombre2 = nombre.replace(" ", "")
+            if(nombre2 != "") {
+                val bundle = bundleOf("tamaño" to 8, "nombre" to nombre, "puntos" to 2);
+                findNavController().navigate(R.id.action_menuJuegoFragment_to_jugar, bundle);
+            }
         }
         botonDificil.setOnClickListener {
             var nombre = Nombre.text.toString()
-            val bundle = bundleOf("tamaño" to 12, "nombre" to nombre);
-            findNavController().navigate(R.id.action_menuJuegoFragment_to_jugar, bundle);
+            var nombre2 = nombre.replace(" ", "")
+            if(nombre2 != "") {
+
+                val bundle = bundleOf("tamaño" to 12, "nombre" to nombre, "puntos" to 4);
+                findNavController().navigate(R.id.action_menuJuegoFragment_to_jugar, bundle);
+            }
         }
     }
 }
