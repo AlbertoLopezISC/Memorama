@@ -40,6 +40,8 @@ class MenuAjustesFragment : Fragment() {
     @SuppressLint("ResourceType")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        println(arguments?.getString("a").toString() + "ssssssssssssssssssssssssssssss")
+
         menuAjustes.background = background.getBackground()
         CambiarColor.background = GradientDrawable(
             GradientDrawable.Orientation.LEFT_RIGHT,

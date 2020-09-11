@@ -5,99 +5,91 @@
     android:id="@+id/secondFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:contentDescription="@string/pantalla_de_instrucciones_sera_rapido_y_sencillo_el_comenzar_a_jugar"
+    android:contentDescription="Pantalla instrucciones"
     tools:context=".SecondFragment">
 
-    <TextView
-        android:id="@+id/textViewInstrucciones"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
-        android:text="@string/sera_facil_comenzar_a_jugar_primero_veamos_los_movimientos_que_puedes_hacer_para_este_tutorial_necesitas_tener_activo_talkback_presiona_siguiente_para_continuar_el_boton_esta_localizado_abajo_a_la_derecha"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:stretchColumns="*"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.267"
-        tools:text="Sera Facil comenzar a jugar, primero veamos los movimientos que puedes hacer. Para este tutorial necesitas tener activo TalkBack. Presiona siguiente para continuar, el boton esta localizado abajo a la derecha." />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <Button
-        android:id="@+id/button_regresar"
-        android:layout_width="140dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginLeft="56dp"
-        android:layout_marginTop="458dp"
-        android:layout_marginBottom="40dp"
-        android:background="#ffffff"
-        android:contentDescription="@string/regresar_menu_de_inicio"
-        android:text="@string/regresar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewInstrucciones"
-        app:layout_constraintVertical_bias="1.0" />
 
-    <Button
-        android:id="@+id/button_siguiente"
-        android:layout_width="140dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="371dp"
-        android:layout_marginBottom="44dp"
-        android:background="#ffffff"
-        android:contentDescription="@string/siguiente"
-        android:text="@string/siguiente"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.546"
-        app:layout_constraintStart_toEndOf="@+id/button_regresar"
-        app:layout_constraintTop_toBottomOf="@+id/textViewInstrucciones"
-        app:layout_constraintVertical_bias="1.0" />
+        <TableRow
+            android:layout_weight="1"
+            android:gravity="center">
 
-    <Button
-        android:id="@+id/carta1Instrucciones"
-        android:layout_width="144dp"
-        android:layout_height="152dp"
-        android:layout_marginTop="89dp"
-        android:layout_marginBottom="152dp"
-        android:background="@drawable/tapa2"
-        android:contentDescription="@string/carta_numero_1"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/button_regresar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.194"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewInstrucciones"
-        app:layout_constraintVertical_bias="0.125" />
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_span="2"
+                android:text="@string/instrucciones"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                android:textAlignment="center"
+                android:gravity="center_horizontal" />
+        </TableRow>
 
-    <Button
-        android:id="@+id/carta2Instrucciones"
-        android:layout_width="144dp"
-        android:layout_height="152dp"
-        android:layout_marginTop="89dp"
-        android:layout_marginBottom="152dp"
-        android:background="@drawable/tapa2"
-        android:contentDescription="@string/carta_numero_2"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/button_regresar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.872"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewInstrucciones"
-        app:layout_constraintVertical_bias="0.125" />
+        <TableRow
+            android:layout_weight="1"
+            android:gravity="center">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/instrucciones"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        app:layout_constraintBottom_toTopOf="@+id/textViewInstrucciones"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/textViewInstrucciones"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10sp"
+                android:layout_span="2"
+                android:text="@string/sera_facil_comenzar_a_jugar_primero_veamos_los_movimientos_que_puedes_hacer_para_este_tutorial_necesitas_tener_activo_talkback_presiona_siguiente_para_continuar_el_boton_esta_localizado_abajo_a_la_derecha"
+                tools:text="Sera Facil comenzar a jugar, primero veamos los movimientos que puedes hacer. Para este tutorial necesitas tener activo TalkBack. Presiona siguiente para continuar, el boton esta localizado abajo a la derecha." />
+        </TableRow>
 
+        <TableRow
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/carta1Instrucciones"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/tapa2"
+                android:contentDescription="@string/carta_numero_1"
+                android:visibility="invisible" />
+
+            <Button
+                android:id="@+id/carta2Instrucciones"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/tapa2"
+                android:contentDescription="@string/carta_numero_2"
+                android:visibility="invisible" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_weight=".5"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/button_regresar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
+                android:contentDescription="@string/regresar_menu_de_inicio"
+                android:text="@string/regresar" />
+
+            <Button
+                android:id="@+id/button_siguiente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
+                android:contentDescription="@string/siguiente"
+                android:text="@string/siguiente" />
+
+        </TableRow>
+    </TableLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

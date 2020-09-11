@@ -5,7 +5,6 @@
     android:id="@+id/root2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradiente"
     tools:context=".Ajustes">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -13,7 +12,12 @@
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay"/>
 
-    <include layout="@layout/content_ajustes" />
+    <include layout="@layout/content_ajustes"
+        android:id="@+id/content_ajustes"/>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/fragment_ajustes"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
