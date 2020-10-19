@@ -14,10 +14,16 @@ import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
 
+    //aqui
+    private var applicacion: AccederApp? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.toolbar))
+
+        //aqui es donde guardotodo el listado de la base de datos
+        applicacion = AccederApp(applicationContext)
 
         findViewById<FloatingActionButton>(R.id.fab).setOnClickListener { view ->
             Snackbar.make(view, "Boton posible para ayuda", Snackbar.LENGTH_LONG)

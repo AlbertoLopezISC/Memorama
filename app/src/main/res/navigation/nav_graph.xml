@@ -17,6 +17,9 @@
         <action
             android:id="@+id/action_FirstFragment_to_menuJuegoFragment"
             app:destination="@id/menuJuegoFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_MenuCartasFragment"
+            app:destination="@id/MenuCartasFragment" />
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
@@ -44,4 +47,31 @@
         android:name="com.example.prueba.jugar"
         android:label="activity_jugar"
         tools:layout="@layout/activity_jugar" />
+    <fragment
+        android:id="@+id/MenuCartasFragment"
+        android:name="com.example.prueba.MenuCartasFragment"
+        android:label="MenuCartasFragment"
+        tools:layout="@layout/activity_menu_cartas">
+         <action
+            android:id="@+id/action_MenuCartasFragment_to_AgregarCartasFragment"
+            app:destination="@id/AgregarCartasFragment" />
+        <action
+            android:id="@+id/action_MenuCartasFragment_to_EliminarCartasFragment"
+            app:destination="@id/EliminarCartasFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/AgregarCartasFragment"
+        android:name="com.example.prueba.AgregarCartasFragment"
+        android:label="AgregarCartasFragment"
+        tools:layout="@layout/fragment_agregar_carta">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/EliminarCartasFragment"
+        android:name="com.example.prueba.EliminarCartasFragment"
+        android:label="EliminarCartasFragment"
+        tools:layout="@layout/fragment_eliminar_carta">
+    </fragment>
 </navigation>

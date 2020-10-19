@@ -27,6 +27,13 @@
     <string name="boton_jugar">Boton jugar</string>
     <string name="boton_salir">boton salir</string>
     <string name="regresar_menu_de_inicio">Regresar menu de inicio</string>
+    <!--Chuy-->
+
+    <string name="boton_eliminar">Boton eliminar</string>
+    <string name="eliminar">Eliminar una carta</string>
+    <string name="agregar">Agregar una carta</string>
+    <string name="Ins_agregar">¿Que deseas hacer?</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="dummy_button">Dummy Button</string>

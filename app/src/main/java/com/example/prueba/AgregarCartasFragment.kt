@@ -18,36 +18,49 @@ import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-
+import androidx.navigation.fragment.findNavController
+import kotlinx.android.synthetic.main.fragment_agregar_carta.*
 import kotlinx.android.synthetic.main.fragment_first.*
-import java.util.jar.Manifest
+// estas agregue para corrutinas
+
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
+
 
 /**
- * A simple [Fragment] subclass as the default destination in the navigation.
+ * A simple [Fragment] subclass.
+
+ * create an instance of this fragment.
  */
-class FirstFragment : Fragment() {
+class AgregarCartasFragment : Fragment() {
+    var applicacion: AccederApp? = null
     val SELECT_FOTO = 1
     val mImages: Uri? = null
     var path: String? = null
+    var filePath = ""
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_first, container, false)
+        return inflater.inflate(R.layout.fragment_agregar_carta, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        firstFragment.background = background.getBackground()
+        applicacion = AccederApp(requireActivity().applicationContext)
+        AgregarCartas.background = background.getBackground()
 
-/*
         context?.let { ContextCompat.checkSelfPermission(it,android.Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED }
 
         ContextCompat.checkSelfPermission(context!!,android.Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
@@ -58,7 +71,7 @@ class FirstFragment : Fragment() {
                 android.Manifest.permission.READ_EXTERNAL_STORAGE
             ) == PackageManager.PERMISSION_GRANTED -> {
                 // You can use the API that requires the permission.
-                view.findViewById<Button>(R.id.cartasBoton).setOnClickListener{
+                view.findViewById<Button>(R.id.button_cargarimagen).setOnClickListener{
                     val intent: Intent = Intent(
                         Intent.ACTION_GET_CONTENT,
                         MediaStore.Images.Media.EXTERNAL_CONTENT_URI
@@ -77,59 +90,72 @@ class FirstFragment : Fragment() {
                 activity?.let { ActivityCompat.requestPermissions(it, arrayOf(permisos), 50) }
             }
         }
-        */*/
 
+        buttonChido.setOnClickListener {
 
+            val inputDescripcion : Descripcion?= Descripcion(0,"","")
 
+            //OJO AQUI
+            val variable: EditText = view.findViewById(R.id.inputdescripcion)
+            //
 
+            inputDescripcion?.descrip = inputdescripcion.text.toString()
+            //
 
+            if(filePath== ""){
+                Toast.makeText(
+                    context,
+                    "Primero selecciona una imagen",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
 
-        view.findViewById<Button>(R.id.button_play).setOnClickListener{
-            findNavController().navigate(R.id.action_FirstFragment_to_menuJuegoFragment)
+            // aqui va la corrutina
+            if (inputDescripcion != null&& filePath != "") {
+                lifecycleScope.launch{
+                    val d = Descripcion(null, variable.text.toString(), filePath)
+                    applicacion?.room?.descripcionDao()?.insert(d)
+                    val basecompleta = applicacion?.room?.descripcionDao()?.getAll()
+                    println("${basecompleta}")
+                }
+
+            }
+
         }
 
-        view.findViewById<Button>(R.id.button_instruccions).setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
-        }
 
-        /*view.findViewById<Button>(R.id.cartasBoton).setOnClickListener{
-            findNavController().navigate(R.id.action_FirstFragment_to_MenuCartas)
-        }
 
-         */
-
-        view.findViewById<Button>(R.id.cartasBoton).setOnClickListener{
-            findNavController().navigate(R.id.action_FirstFragment_to_MenuCartasFragment)
-        }
     }
 
     @RequiresApi(Build.VERSION_CODES.KITKAT)
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data);
-            when(requestCode){
-                SELECT_FOTO -> {
-                    if (resultCode == RESULT_OK) {
-                        //Tomar el nombre de la foto seleccionada
-                        val selectedImage: Uri? = data?.data
-                        val wholeID = DocumentsContract.getDocumentId(selectedImage)
-                        val id = wholeID.split(":".toRegex()).toTypedArray()[1]
+        when(requestCode){
+            SELECT_FOTO -> {
+                if (resultCode == RESULT_OK) {
+                    //Tomar el nombre de la foto seleccionada
+                    val selectedImage: Uri? = data?.data
+                    val wholeID = DocumentsContract.getDocumentId(selectedImage)
+                    val id = wholeID.split(":".toRegex()).toTypedArray()[1]
 
-                        val column = arrayOf(MediaStore.Images.Media.DATA)
-                        val sel = MediaStore.Images.Media._ID + "=?"
+                    val column = arrayOf(MediaStore.Images.Media.DATA)
+                    val sel = MediaStore.Images.Media._ID + "=?"
 
-                        val cursor: Cursor? = activity?.contentResolver?.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,column, sel, arrayOf(id), null)
-                        var filePath = ""
-                        val columnIndex = cursor?.getColumnIndex(column[0])
-                        if (cursor != null) {
-                            if(cursor.moveToFirst())
-                                filePath = cursor.getString(columnIndex!!)
-                        }
-                        this.path = filePath
-                        println(filePath)
-                        /*bitmap = BitmapFactory.decodeFile(path);  // Crea un mapa de bits y lo asigna a un imagenView
-                        imgProducto.setImageBitmap(bitmap);*/
+                    val cursor: Cursor? = activity?.contentResolver?.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,column, sel, arrayOf(id), null)
+                  //  var filePath = ""
+                    val columnIndex = cursor?.getColumnIndex(column[0])
+                    if (cursor != null) {
+                        if(cursor.moveToFirst())
+                            filePath = cursor.getString(columnIndex!!)
                     }
+                    this.path = filePath
+                    println(filePath)
+                   val bitmap = BitmapFactory.decodeFile(path); // Crea un mapa de bits y lo asigna a un imagenView
+                   ponerimagen.setImageBitmap(bitmap);
+                    // imgProducto.setImageBitmap(bitmap);
                 }
             }
+        }
     }
+
 }
