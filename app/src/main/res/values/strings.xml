@@ -32,7 +32,15 @@
     <string name="boton_eliminar">Boton eliminar</string>
     <string name="eliminar">Eliminar una carta</string>
     <string name="agregar">Agregar una carta</string>
+    <string name="editar">Editar las cartas</string>
     <string name="Ins_agregar">¿Que deseas hacer?</string>
+    <string name="strImgSeleccionada">Ésta es la imagen seleccionada.</string>
+    <string name="strBtnAgregarImagen">Agrega una nueva imagen a la carta.</string>
+    <string name="strTxtDescripcion">Agrega la descripción que se leerá.</string>
+    <string name="strBtnGuardar">Guardar la configuración de la carta.</string>
+    <string name="strBtnEliminarCarta">Eliminar la carta seleccionada</string>
+
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

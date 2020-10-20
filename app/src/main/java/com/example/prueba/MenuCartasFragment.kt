@@ -1,6 +1,5 @@
 package com.example.prueba
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -27,11 +26,14 @@ class MenuCartasFragment : Fragment() {
         MenuCartas.background = background.getBackground()
 
         view.findViewById<Button>(R.id.button_Agregar).setOnClickListener{
+            //fragmentManager?.beginTransaction()?.replace(R.id.nav_host_fragment, AgregarCartasFragment())?.commit()
             findNavController().navigate(R.id.action_MenuCartasFragment_to_AgregarCartasFragment)
         }
 
-        view.findViewById<Button>(R.id.button_eliminar).setOnClickListener{
-            findNavController().navigate(R.id.action_MenuCartasFragment_to_EliminarCartasFragment)
+        view.findViewById<Button>(R.id.btnEditarCartas).setOnClickListener {
+            //fragmentManager?.beginTransaction()?.replace(R.id.nav_host_fragment, EditarCartasFragment())?.commit()
+            findNavController().navigate(R.id.action_MenuCartasFragment_to_editarCartasFragment)
         }
+
     }
 }

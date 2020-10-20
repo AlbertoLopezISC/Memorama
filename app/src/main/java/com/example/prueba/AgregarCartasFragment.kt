@@ -1,38 +1,33 @@
 package com.example.prueba
 
 import android.app.Activity.RESULT_OK
-import android.content.ContentResolver
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.database.Cursor
-import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
+import android.opengl.Visibility
 import android.os.Build
-import android.os.Build.VERSION_CODES.M
 import android.os.Bundle
 import android.provider.DocumentsContract
 import android.provider.MediaStore
 import android.view.LayoutInflater
-import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.fragment_agregar_carta.*
-import kotlinx.android.synthetic.main.fragment_first.*
 // estas agregue para corrutinas
 
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import kotlinx.coroutines.launch
+import java.io.Serializable
 
 
 /**
@@ -46,7 +41,8 @@ class AgregarCartasFragment : Fragment() {
     val mImages: Uri? = null
     var path: String? = null
     var filePath = ""
-
+    private var carta: Descripcion? = null
+    private var position: Int? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -59,11 +55,25 @@ class AgregarCartasFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         applicacion = AccederApp(requireActivity().applicationContext)
-        AgregarCartas.background = background.getBackground()
+        val txtDescripcion: EditText = view.findViewById(R.id.inputdescripcion)
+        val inputDescripcion : Descripcion?= Descripcion(0,"","")
+        val btnEliminar: Button = view.findViewById(R.id.btnEliminarCarta)
+        EditarCartas.background = background.getBackground()
+
+
+        carta =  arguments?.getSerializable("carta") as Descripcion?
+        position = arguments?.getInt("position")
 
         context?.let { ContextCompat.checkSelfPermission(it,android.Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED }
 
         ContextCompat.checkSelfPermission(context!!,android.Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
+
+        if (carta != null && position != null){
+            ponerimagen.setImageBitmap(BitmapFactory.decodeFile(carta?.ruta))
+            txtDescripcion.setText(carta?.descrip)
+            btnEliminar.visibility = View.VISIBLE
+        }
+
 
         when {
             ContextCompat.checkSelfPermission(
@@ -92,38 +102,59 @@ class AgregarCartasFragment : Fragment() {
         }
 
         buttonChido.setOnClickListener {
+            if (carta != null && position != null) {
+                filePath = carta!!.ruta
+                if (inputDescripcion != null&& filePath != "") {
+                    lifecycleScope.launch{
+                        val d = Descripcion(null, txtDescripcion.text.toString(), filePath)
+                        applicacion?.room?.descripcionDao()?.updateCardById(carta?.id, txtDescripcion.text.toString(), filePath)
+                    }.invokeOnCompletion {
+                        Toast.makeText(context, "Listo, se ha editado la carta.",Toast.LENGTH_SHORT).show()
+                        activity?.finish()
+                    }
 
-            val inputDescripcion : Descripcion?= Descripcion(0,"","")
+                }
+            } else {
+                //OJO AQUI
+                //
 
-            //OJO AQUI
-            val variable: EditText = view.findViewById(R.id.inputdescripcion)
-            //
+                inputDescripcion?.descrip = inputdescripcion.text.toString()
+                //
 
-            inputDescripcion?.descrip = inputdescripcion.text.toString()
-            //
+                if(filePath== ""){
+                    Toast.makeText(
+                        context,
+                        "Primero selecciona una imagen",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
 
-            if(filePath== ""){
-                Toast.makeText(
-                    context,
-                    "Primero selecciona una imagen",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
+                // aqui va la corrutina
+                if (inputDescripcion != null&& filePath != "") {
+                    lifecycleScope.launch{
+                        val d = Descripcion(null, txtDescripcion.text.toString(), filePath)
+                        applicacion?.room?.descripcionDao()?.insert(d)
+                        Toast.makeText(context, "Listo, se ha agregado tu nueva carta.",Toast.LENGTH_SHORT).show()
+                        val aux: MenuCartasFragment = MenuCartasFragment()
+                        findNavController().navigateUp()
+                        //fragmentManager?.beginTransaction()?.replace(R.id.nav_host_fragment, aux)?.commit()
+                    }
 
-            // aqui va la corrutina
-            if (inputDescripcion != null&& filePath != "") {
-                lifecycleScope.launch{
-                    val d = Descripcion(null, variable.text.toString(), filePath)
-                    applicacion?.room?.descripcionDao()?.insert(d)
-                    val basecompleta = applicacion?.room?.descripcionDao()?.getAll()
-                    println("${basecompleta}")
                 }
 
             }
 
         }
 
-
+        btnEliminar.setOnClickListener{
+            lifecycleScope.launch {
+                applicacion?.room?.descripcionDao()?.deleteCardById(carta?.id)
+                Toast.makeText(context, "Se eliminó la carta: ${carta?.id}.", Toast.LENGTH_SHORT).show()
+                val aux: EditarCartasFragment = EditarCartasFragment()
+                findNavController().navigateUp()
+                //fragmentManager?.beginTransaction()?.replace(R.id.nav_host_fragment,aux)?.commit()
+            }
+        }
 
     }
 

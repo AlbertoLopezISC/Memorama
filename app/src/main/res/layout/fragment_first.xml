@@ -63,9 +63,9 @@
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="317dp"
-        android:layout_height="322dp"
-        android:src="@drawable/imageninicio2"
+        android:layout_width="280dp"
+        android:layout_height="291dp"
+        android:src="@drawable/logofinal"
         app:layout_constraintBottom_toTopOf="@+id/button_play"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

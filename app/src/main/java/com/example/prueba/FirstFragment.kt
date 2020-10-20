@@ -11,6 +11,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Build.VERSION_CODES.M
 import android.os.Bundle
+import android.os.Handler
 import android.provider.DocumentsContract
 import android.provider.MediaStore
 import android.view.LayoutInflater
@@ -26,6 +27,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 
 import kotlinx.android.synthetic.main.fragment_first.*
+import kotlinx.android.synthetic.main.fragment_second.*
 import java.util.jar.Manifest
 
 /**
@@ -89,7 +91,12 @@ class FirstFragment : Fragment() {
         }
 
         view.findViewById<Button>(R.id.button_instruccions).setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+            view.findViewById<Button>(R.id.button_instruccions).contentDescription = "Sera Facil comenzar a jugar," +
+                    " primero veamos los movimientos que puedes hacer. Para este tutorial necesitas tener activo TalkBack." +
+                    " Presiona siguiente para continuar, el boton esta localizado abajo a la derecha."
+            Handler().postDelayed(Runnable { // Do something after 5s = 5000ms
+                findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+            }, 1000)
         }
 
         /*view.findViewById<Button>(R.id.cartasBoton).setOnClickListener{
@@ -99,37 +106,12 @@ class FirstFragment : Fragment() {
          */
 
         view.findViewById<Button>(R.id.cartasBoton).setOnClickListener{
+            /*val aux =  MenuCartasFragment()
+            fragmentManager?.beginTransaction()?.add(R.id.nav_host_fragment, aux)
+            fragmentManager?.beginTransaction()?.replace(R.id.nav_host_fragment,aux)?.commit()*/
             findNavController().navigate(R.id.action_FirstFragment_to_MenuCartasFragment)
         }
+
     }
 
-    @RequiresApi(Build.VERSION_CODES.KITKAT)
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data);
-            when(requestCode){
-                SELECT_FOTO -> {
-                    if (resultCode == RESULT_OK) {
-                        //Tomar el nombre de la foto seleccionada
-                        val selectedImage: Uri? = data?.data
-                        val wholeID = DocumentsContract.getDocumentId(selectedImage)
-                        val id = wholeID.split(":".toRegex()).toTypedArray()[1]
-
-                        val column = arrayOf(MediaStore.Images.Media.DATA)
-                        val sel = MediaStore.Images.Media._ID + "=?"
-
-                        val cursor: Cursor? = activity?.contentResolver?.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,column, sel, arrayOf(id), null)
-                        var filePath = ""
-                        val columnIndex = cursor?.getColumnIndex(column[0])
-                        if (cursor != null) {
-                            if(cursor.moveToFirst())
-                                filePath = cursor.getString(columnIndex!!)
-                        }
-                        this.path = filePath
-                        println(filePath)
-                        /*bitmap = BitmapFactory.decodeFile(path);  // Crea un mapa de bits y lo asigna a un imagenView
-                        imgProducto.setImageBitmap(bitmap);*/
-                    }
-                }
-            }
-    }
 }

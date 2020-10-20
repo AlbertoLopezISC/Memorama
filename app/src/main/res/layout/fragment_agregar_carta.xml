@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/EditarCartas"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".AgregarCartasFragment"
-    android:id="@+id/AgregarCartas">
+    android:background="#FFFFFF"
+    tools:context=".AgregarCartasFragment">
+
 
 
     <Button
@@ -13,11 +15,31 @@
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_marginBottom="24dp"
+        android:background="#FFFFFF"
+        android:contentDescription="@string/strBtnAgregarImagen"
+        android:gravity="center"
         android:text="Cargar imagen"
         app:layout_constraintBottom_toTopOf="@+id/inputdescripcion"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnEliminarCarta"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginStart="307dp"
+        android:layout_marginLeft="307dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:background="#FFFFFF"
+        android:contentDescription="@string/strBtnEliminarCarta"
+        android:gravity="center"
+        android:text="Eliminar"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:gravity="center"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/ponerimagen"
@@ -28,10 +50,11 @@
         android:layout_marginEnd="67dp"
         android:layout_marginRight="67dp"
         android:layout_marginBottom="36dp"
+        android:contentDescription="@string/strImgSeleccionada"
+        android:gravity="center"
         android:src="@android:drawable/ic_menu_camera"
         app:layout_constraintBottom_toTopOf="@+id/button_cargarimagen"
         app:layout_constraintEnd_toEndOf="parent"
-        android:gravity="center"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
@@ -40,14 +63,14 @@
         android:layout_height="54dp"
         android:layout_marginBottom="20dp"
         android:autofillHints=""
+        android:contentDescription="@string/strTxtDescripcion"
         android:ems="10"
+        android:gravity="center"
         android:inputType="textPersonName"
-        android:text="Descripcion"
         android:textAlignment="textStart"
         app:layout_constraintBottom_toTopOf="@+id/buttonChido"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:gravity="center"
         tools:ignore="RtlCompat" />
 
     <Button
@@ -55,10 +78,12 @@
         android:layout_width="181dp"
         android:layout_height="48dp"
         android:layout_marginBottom="80dp"
+        android:background="#ffffff"
+        android:contentDescription="@string/strBtnGuardar"
+        android:gravity="center"
         android:text="Guardar Carta"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:gravity="center"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,6 +2,7 @@ package com.example.prueba
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 @Entity
 data class Descripcion(
@@ -9,6 +10,4 @@ data class Descripcion(
     val id: Int?,
     var descrip: String,
     val ruta: String
-
-
-)
+): Serializable

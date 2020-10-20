@@ -39,10 +39,7 @@ class SecondFragment : Fragment() {
         val tapa: Drawable? = androidx.core.content.res.ResourcesCompat.getDrawable(resources, R.drawable.tapa2, null)
         val drawable: Drawable? = androidx.core.content.res.ResourcesCompat.getDrawable(resources, R.drawable.barco, null)
         val imagen2: Drawable? = androidx.core.content.res.ResourcesCompat.getDrawable(resources, R.drawable.barco_de_papel, null)
-        val imagen3: Drawable? = androidx.core.content.res.ResourcesCompat.getDrawable(resources, R.drawable.pajaro_carpintero, null)
-        val imagen4: Drawable? = androidx.core.content.res.ResourcesCompat.getDrawable(resources, R.drawable.pajaro_carpintero_colorido, null)
-        val imagen5: Drawable? = androidx.core.content.res.ResourcesCompat.getDrawable(resources, R.drawable.nube, null)
-        secondFragment.background = background.getBackground()
+       secondFragment.background = background.getBackground()
 
 
         Handler().postDelayed(Runnable { // Do something after 5s = 5000ms

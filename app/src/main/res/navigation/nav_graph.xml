@@ -58,6 +58,9 @@
         <action
             android:id="@+id/action_MenuCartasFragment_to_EliminarCartasFragment"
             app:destination="@id/EliminarCartasFragment" />
+        <action
+            android:id="@+id/action_MenuCartasFragment_to_editarCartasFragment"
+            app:destination="@id/editarCartasFragment" />
 
     </fragment>
     <fragment
@@ -66,6 +69,12 @@
         android:label="AgregarCartasFragment"
         tools:layout="@layout/fragment_agregar_carta">
 
+        <action
+            android:id="@+id/action_AgregarCartasFragment_to_MenuCartasFragment"
+            app:destination="@id/MenuCartasFragment" />
+        <action
+            android:id="@+id/action_AgregarCartasFragment_to_editarCartasFragment"
+            app:destination="@id/editarCartasFragment" />
     </fragment>
 
     <fragment
@@ -73,5 +82,16 @@
         android:name="com.example.prueba.EliminarCartasFragment"
         android:label="EliminarCartasFragment"
         tools:layout="@layout/fragment_eliminar_carta">
+    </fragment>
+    <fragment
+        android:id="@+id/editarCartasFragment"
+        android:name="com.example.prueba.EditarCartasFragment"
+        android:label="EditarCartasFragment" >
+        <action
+            android:id="@+id/action_editarCartasFragment_to_AgregarCartasFragment"
+            app:destination="@id/AgregarCartasFragment" />
+        <action
+            android:id="@+id/action_editarCartasFragment_self"
+            app:destination="@id/editarCartasFragment" />
     </fragment>
 </navigation>
