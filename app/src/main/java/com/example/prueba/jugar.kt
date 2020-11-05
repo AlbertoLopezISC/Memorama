@@ -8,13 +8,23 @@ import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import kotlinx.android.synthetic.main.activity_jugar.*
 import java.util.concurrent.Delayed
+import kotlinx.coroutines.launch
+import android.graphics.BitmapFactory
+import android.graphics.drawable.BitmapDrawable
+import android.widget.ImageView
 
+data class carta(val descripcion: String, val imagen : Drawable?, var par : Int)
 
 class jugar : AppCompatActivity() {
-    var retraso:Delayed? =null
 
+    private lateinit var applicacion: AccederApp //variable para consultar la base de datos
+    var imagen: ImageView? = null
+
+    private var mazo = ArrayList<carta>()
+    private var baraja = ArrayList<carta>()
     var cartaSeleccionadaUno  :Button? = null     //con estas variables guardamos los botones seleccionados
     var cartaSeleccionadaDos : Button? = null     //******
 
@@ -37,18 +47,50 @@ class jugar : AppCompatActivity() {
         setContentView(R.layout.activity_jugar)
         jugarFragment.background = background.getBackground()
 
+
+
+        var uno = 1
+        applicacion = AccederApp(this)
+        lifecycleScope.launch {
+            val basecompleta = applicacion?.room?.descripcionDao()?.getAll()
+            println("tamaño ${basecompleta.size}")
+            for(carta in basecompleta){
+
+                    val bitmap = BitmapFactory.decodeFile(carta.ruta)
+                     var d : Drawable = BitmapDrawable(getResources(), bitmap);
+                    mazo.add(carta(carta.descrip,d, -1))
+
+            }
+
+
+
+        println("si pasa por ahi : $uno")
+
+
+
         val tapa:  Drawable? = androidx.core.content.res.ResourcesCompat.getDrawable(resources, R.drawable.tapa2, null)
-        val drawable: Drawable? = androidx.core.content.res.ResourcesCompat.getDrawable(resources, R.drawable.sol, null)
-        val imagen1: Drawable? = androidx.core.content.res.ResourcesCompat.getDrawable(resources, R.drawable.barco, null)
-        val imagen2: Drawable? = androidx.core.content.res.ResourcesCompat.getDrawable(resources, R.drawable.barco_de_papel, null)
-        val imagen3: Drawable? = androidx.core.content.res.ResourcesCompat.getDrawable(resources, R.drawable.pajaro_carpintero, null)
-        val imagen4: Drawable? = androidx.core.content.res.ResourcesCompat.getDrawable(resources, R.drawable.pajaro_carpintero_colorido, null)
-        val imagen5: Drawable? = androidx.core.content.res.ResourcesCompat.getDrawable(resources, R.drawable.nube, null)
+        val imagen6: Drawable = resources.getDrawable(R.drawable.sol)
+        val imagen1: Drawable = resources.getDrawable(R.drawable.barco)
+        val imagen2: Drawable =  resources.getDrawable(R.drawable.barco_de_papel)
+        val imagen3: Drawable = resources.getDrawable(R.drawable.pajaro_carpintero)
+        val imagen4: Drawable = resources.getDrawable(R.drawable.pajaro_carpintero_colorido)
+        val imagen5: Drawable = resources.getDrawable(R.drawable.nube)
+
+        mazo.add(carta("barco mercantil",imagen1, -1))
+        mazo.add(carta("barco de papel",imagen2, -1))
+        mazo.add(carta("pajaro carpintero",imagen3, -1))
+        mazo.add(carta("Pajaro carpintero de varios colores",imagen4, -1))
+        mazo.add(carta("nube esponjada",imagen5, -1))
+        mazo.add(carta("Sol resplandeciente",imagen6, -1))
+
+
 
         //capturando lo que nos llego de parametro
         val objetIntent: Intent= intent
         tamano_baraja = objetIntent.getIntExtra("tamaño",12)
         var puntos = objetIntent.getIntExtra("puntos", 0)
+
+
         //Boton para salir del juego
         Boton_salida.setOnClickListener {
             //Lineas de codigo para llamar a la actividad principal pero sin liberar memoria
@@ -57,6 +99,7 @@ class jugar : AppCompatActivity() {
             //Ahora se termina la acctividad, regresando a la anterior. Esto permite liberar memoria
             finish()
         }
+
         //**********
         //Guardamos todos los botones en un array
         var totalBotones= arrayListOf<Button>(
@@ -82,7 +125,7 @@ class jugar : AppCompatActivity() {
             do {
                 repetidas = 0
                 rnds = (0..( tamano_baraja / 2 )-1).random()
-
+                
                 for (index in baraja_numeros) {
                     if (index == rnds)
                         repetidas++
@@ -91,11 +134,28 @@ class jugar : AppCompatActivity() {
                     baraja_numeros.add(rnds)
             }while(repetidas>1)
         } //Fin del for*************
+
+
+        for(i in 0..tamano_baraja/2-1) {
+            do {
+                repetidas = 0
+                rnds = (0..mazo.size - 1).random()
+                var posibleCarta = mazo[rnds]
+                for (cartaAuxiliar in baraja) {
+                    if (cartaAuxiliar == posibleCarta)
+                        repetidas++
+                }
+                if (repetidas != 1)
+                    baraja.add(posibleCarta)
+            }while(repetidas > 0)
+        }
+
         //fin de barajear **********
 
         //Comprobando en la terminal que se hayan generado los numeros correctamente
         var tamaño=baraja_numeros.size
         println("el tamaño de la baraja es  de $tamaño")
+        println("el tamaño del mazo  es  de ${mazo.size}")
         for (numero in baraja_numeros)
             println(numero)
         //fin de la comprobacion***************
@@ -127,18 +187,18 @@ class jugar : AppCompatActivity() {
                 if(cartaUno == -1) { //en caso de ser la primera carta que se escogió
                     cartaUno = baraja_numeros[index]    // Guardamos que es lo que esconde esa carta
                     cartaSeleccionadaUno=boton
-                    cartaSeleccionadaUno?.setBackground(drawable) //Cambiamos la imagen (volteamos la carta)
+                    cartaSeleccionadaUno?.setBackground(baraja[cartaUno].imagen) //Cambiamos la imagen (volteamos la carta)
                     cartaUnoPos=boton.getContentDescription().toString()
-                    boton.setContentDescription("Sol") //cambiamos la descripcion
+                    boton.setContentDescription(baraja[cartaUno].descripcion) //cambiamos la descripcion
                 } //fin del if**********
                 else if(boton != cartaSeleccionadaUno  && cartaDos == -1) { //en caso de ser la segunda carta que se escogió
 
 
                     cartaDos = baraja_numeros[index]    // Guardamos que es lo que esconde esa carta
                     cartaSeleccionadaDos=boton
-                    cartaSeleccionadaDos?.setBackground(drawable) //Cambiamos la imagen (volteamos la carta)
+                    cartaSeleccionadaDos?.setBackground(baraja[cartaDos].imagen) //Cambiamos la imagen (volteamos la carta)
                     cartaDosPos=boton.getContentDescription().toString()
-                    boton.setContentDescription("Sol")
+                    boton.setContentDescription(baraja[cartaDos].descripcion)
 
 
                     if(cartaUno == cartaDos  ) { //En caso de que hayan sido las mismas
@@ -187,7 +247,7 @@ class jugar : AppCompatActivity() {
                     //Esto debe pasar indistintamente de que sean correctas o no las cartas
                     println("vuelve a intentar WEY : $cartaUno y $cartaDos")
 
-                    cartaSeleccionadaUno?.setTag("hola")
+
 
 
 
@@ -201,6 +261,7 @@ class jugar : AppCompatActivity() {
         }//fin del for *********
 
 
+        } //fin de la corrutina*****
 
     } //fin de la funcion OnCreate
 
