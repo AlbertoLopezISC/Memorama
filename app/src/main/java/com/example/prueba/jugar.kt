@@ -10,6 +10,8 @@ import android.util.DisplayMetrics
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.TableLayout
+import android.widget.TableRow
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import kotlinx.android.synthetic.main.activity_jugar.*
@@ -100,6 +102,7 @@ class jugar : AppCompatActivity() {
             finish()
         }
 
+            val b11 = findViewById<Button>(R.id.button11)
         //**********
         //Guardamos todos los botones en un array
         var totalBotones= arrayListOf<Button>(
@@ -113,7 +116,7 @@ class jugar : AppCompatActivity() {
             button8,
             button9,
             button10,
-            button11,
+            b11,
             button12
         )
             // definiendo tamaño de los botones
@@ -123,10 +126,8 @@ class jugar : AppCompatActivity() {
             val height = metrics.heightPixels // alto absoluto en pixels
             println("ancho de la pantalla =  $width")
             println("ancho de la pantalla =  $height")
-            for(boton in totalBotones){
-                boton.width = width/2 -50
-                boton.height = 500
-            }
+            val w = (width - 60) / 3
+            val h = (height - 540) / 4
             //*******************************
 
 
@@ -182,6 +183,11 @@ class jugar : AppCompatActivity() {
                 carta.setContentDescription("carta número ${index + 1}")
                 carta.setTag("carta ${index + 1}")
                 println(carta.getTag())
+                println("boton:$index altura: $h  ancho: $w")
+                val params = carta.layoutParams
+                params.width = w
+                params.height = h
+                carta.layoutParams = params
                 baraja_botones.add(carta)
             }else {
                 carta.setVisibility(View.INVISIBLE)
