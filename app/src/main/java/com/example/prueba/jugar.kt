@@ -1,20 +1,20 @@
 package com.example.prueba
 
 import android.content.Intent
+import android.graphics.BitmapFactory
+import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.os.Handler
+import android.util.DisplayMetrics
 import android.view.View
 import android.widget.Button
-import android.widget.ImageButton
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import kotlinx.android.synthetic.main.activity_jugar.*
-import java.util.concurrent.Delayed
 import kotlinx.coroutines.launch
-import android.graphics.BitmapFactory
-import android.graphics.drawable.BitmapDrawable
-import android.widget.ImageView
+
 
 data class carta(val descripcion: String, val imagen : Drawable?, var par : Int)
 
@@ -116,6 +116,19 @@ class jugar : AppCompatActivity() {
             button11,
             button12
         )
+            // definiendo tamaño de los botones
+            val metrics = DisplayMetrics()
+            windowManager.defaultDisplay.getMetrics(metrics)
+            val width = metrics.widthPixels // ancho absoluto en pixels
+            val height = metrics.heightPixels // alto absoluto en pixels
+            println("ancho de la pantalla =  $width")
+            println("ancho de la pantalla =  $height")
+            for(boton in totalBotones){
+                boton.width = width/2 -50
+                boton.height = 500
+            }
+            //*******************************
+
 
         //***************
 
