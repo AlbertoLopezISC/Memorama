@@ -7,10 +7,27 @@
     android:stretchColumns="*"
     android:orientation="horizontal">
 
-    <TableRow
+    <TableRow android:id="@+id/renglonGanar"
+        android:visibility="gone"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:layout_marginRight="5dp">
+
+        <TextView android:id="@+id/textoGanar"
+            android:gravity="center"
+            android:layout_span="3"
+            android:text="Ganaste!!!"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:visibility="visible"/>
+
+    </TableRow>
+    <TableRow android:id="@+id/renglonUno"
+        android:visibility="visible"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:layout_marginRight="5dp">
+
         <Button
             android:id="@+id/button1"
             android:layout_width="100dp"
@@ -40,6 +57,7 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:layout_marginRight="5dp">
+
         <Button
             android:id="@+id/button4"
             android:layout_margin="5dp"

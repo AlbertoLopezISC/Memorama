@@ -41,6 +41,7 @@ class jugar : AppCompatActivity() {
 
     var rnds: Int = 0  //variable para generar numeros aleatorios
     var repetidas = 0 //variable para generar los numeros aleatorios
+    var cartasSobrantes : Int = 0
 
 
 
@@ -91,6 +92,7 @@ class jugar : AppCompatActivity() {
         val objetIntent: Intent= intent
         tamano_baraja = objetIntent.getIntExtra("tamaño",12)
         var puntos = objetIntent.getIntExtra("puntos", 0)
+            cartasSobrantes = tamano_baraja/2
 
 
         //Boton para salir del juego
@@ -222,6 +224,8 @@ class jugar : AppCompatActivity() {
 
                     if(cartaUno == cartaDos  ) { //En caso de que hayan sido las mismas
 
+
+                        cartasSobrantes-=1
                         //empieza retardo
                         cartaSeleccionadaDos?.setContentDescription("Acertaste!!")
 
@@ -234,6 +238,15 @@ class jugar : AppCompatActivity() {
                             textoPuntuacion.requestFocus()
                             cartaUno = -1
                             cartaDos = -1
+
+                            if(cartasSobrantes== 0 ){
+                                renglonUno.visibility=View.GONE
+                                renglonGanar.visibility=View.VISIBLE
+                                textoGanar.contentDescription = "Ganaste, tu puntuación fue de $puntuacion puntos"
+                                textoGanar.visibility=View.VISIBLE
+                            }
+
+
                         }, 3000) //Fin del retardo
 
                         // cartaSeleccionadaUno?.setEnabled(false)               // setEnabled
