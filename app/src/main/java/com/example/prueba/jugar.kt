@@ -71,7 +71,7 @@ class jugar : AppCompatActivity() {
 
 
 
-        val tapa:  Drawable? = androidx.core.content.res.ResourcesCompat.getDrawable(resources, R.drawable.tapa2, null)
+        val tapa:  Drawable? = androidx.core.content.res.ResourcesCompat.getDrawable(resources, R.drawable.fondo_opcional, null)
         val imagen6: Drawable = resources.getDrawable(R.drawable.sol)
         val imagen1: Drawable = resources.getDrawable(R.drawable.barco)
         val imagen2: Drawable =  resources.getDrawable(R.drawable.barco_de_papel)
@@ -244,6 +244,7 @@ class jugar : AppCompatActivity() {
                                 renglonGanar.visibility=View.VISIBLE
                                 textoGanar.contentDescription = "Ganaste, tu puntuación fue de $puntuacion puntos"
                                 textoGanar.visibility=View.VISIBLE
+                                textoGanar.setContentDescription("Felicidades Ganaste!!")
                             }
 
 

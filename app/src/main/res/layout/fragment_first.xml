@@ -65,7 +65,7 @@
         android:id="@+id/imageView4"
         android:layout_width="240dp"
         android:layout_height="251dp"
-        android:src="@drawable/logofinal"
+        android:src="@drawable/logoend"
         app:layout_constraintBottom_toTopOf="@+id/button_play"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

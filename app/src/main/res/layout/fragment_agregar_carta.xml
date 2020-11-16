@@ -16,6 +16,7 @@
         android:layout_margin="10dp"
         android:src="@android:drawable/ic_menu_camera"/>
     <Button
+        android:padding="4dp"
         android:id="@+id/button_cargarimagen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -24,11 +25,13 @@
         android:contentDescription="@string/strBtnAgregarImagen"
         android:layout_gravity="center"
         android:text="Cargar imagen"
+
         />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+       android:layout_marginLeft="10dp"
         android:text="Ingresa una descripción"
         android:textSize="25dp"
         />
@@ -50,6 +53,7 @@
 
 
     <Button
+        android:padding="4dp"
         android:id="@+id/buttonChido"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -61,6 +65,7 @@
         />
 
     <Button
+        android:padding="4dp"
         android:id="@+id/btnEliminarCarta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
