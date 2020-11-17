@@ -112,6 +112,10 @@ class FirstFragment : Fragment() {
             findNavController().navigate(R.id.action_FirstFragment_to_MenuCartasFragment)
         }
 
+        view.findViewById<Button>(R.id.button_salir).setOnClickListener {
+            System.exit(0)
+        }
+
     }
 
 }

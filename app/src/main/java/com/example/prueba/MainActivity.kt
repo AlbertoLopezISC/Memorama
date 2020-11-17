@@ -25,10 +25,7 @@ class MainActivity : AppCompatActivity() {
         //aqui es donde guardotodo el listado de la base de datos
         applicacion = AccederApp(applicationContext)
 
-        findViewById<FloatingActionButton>(R.id.fab).setOnClickListener { view ->
-            Snackbar.make(view, "Boton posible para ayuda", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
-        }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
