@@ -12,13 +12,14 @@
         android:id="@+id/Agregar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="130dp"
+        android:layout_marginBottom="56dp"
         android:layout_span="2"
         android:gravity="center_horizontal"
         android:text="@string/Ins_agregar"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        app:layout_constraintBottom_toTopOf="@+id/button_Agregar" />
+        app:layout_constraintBottom_toTopOf="@+id/button_Agregar"
+        tools:layout_editor_absoluteX="0dp" />
 
     <Button
         android:id="@+id/button_Agregar"
